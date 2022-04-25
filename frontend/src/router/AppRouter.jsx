@@ -6,17 +6,14 @@ import { AuthContext } from "../auth/AuthContext";
 import AuthRouter from "./AuthRouter";
 import { PublicRouter } from "./PublicRoute";
 import { PrivateRouter } from "./PrivateRoute";
-import Chat from "../pages/Chat";
+
+// App
+import { App } from "../components/core/App";
 
 export default function AppRouter() {
   const { auth, verifyToken } = React.useContext(AuthContext);
 
-  // if (auth.pending) {
-  //   return <h1>Waiting</h1>;
-  // }
-
   React.useEffect(() => {
-    console.log("verifyToken");
     verifyToken();
   }, [verifyToken]);
 
@@ -37,7 +34,7 @@ export default function AppRouter() {
               path="/*"
               element={
                 <PrivateRouter>
-                  <Chat />
+                  <App />
                 </PrivateRouter>
               }
             />
