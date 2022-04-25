@@ -2,15 +2,18 @@ import * as React from "react";
 import AppRouter from "./router/AppRouter";
 
 import { AuthProvider } from "./auth/AuthContext";
-import { AppProvider } from "./context/app/AppContext";
+import { SocketProvider } from "./context/SocketContext";
+import { ChatProvider } from "./context/chat/ChatContext";
 
 function App() {
   return (
-    <AppProvider>
+    <ChatProvider>
       <AuthProvider>
-        <AppRouter />
+        <SocketProvider>
+          <AppRouter />
+        </SocketProvider>
       </AuthProvider>
-    </AppProvider>
+    </ChatProvider>
   );
 }
 
